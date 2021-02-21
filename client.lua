@@ -1,4 +1,7 @@
+require("json")
+
 blips = {}
+local data = assert(io.open("test.txt", "w"))
 
 function createBlip(coord, blipID, blipName)
   if blips[blipName] ~= nil then
