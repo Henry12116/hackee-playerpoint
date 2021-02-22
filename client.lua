@@ -12,12 +12,13 @@ function createBlip(coord, blipID, blipName)
     local blipSize = tonumber(GetConvar("blip_size_convar", 0.8))
 
     SetBlipSprite (blip, blipID)
-    SetBlipDisplay(blip, 3)
+    SetBlipDisplay(blip, 4)
     SetBlipScale  (blip, blipSize)
     SetBlipColour (blip, 0)
     BeginTextCommandSetBlipName('STRING')
     AddTextComponentSubstringPlayerName(blipName)
     EndTextCommandSetBlipName(blip)
+    SetBlipAsShortRange(blip, true)
     blips[blipName] = blip
   end
 end
@@ -26,7 +27,7 @@ RegisterCommand('addpoint', function(source, args)
   if GetFirstBlipInfoId( 8 ) ~= 0 and args[1] ~= nil and args[2] ~= nil then
     local blipID = tonumber(args[1])
     local blipName = args[2]
-    local waypointBlip = GetFirstBlipInfoId( 8 ) 
+    local waypointBlip = GetFirstBlipInfoId( 8 )
     local coord = Citizen.InvokeNative( 0xFA7C7F0AADF25D09, waypointBlip, Citizen.ResultAsVector( ) ) 
     
     createBlip(coord, blipID, blipName)
