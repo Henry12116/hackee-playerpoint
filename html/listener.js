@@ -549,13 +549,12 @@ $(function() {
         lastPage();
     });
 
-    function closehud() {
-        $.post("http://hackee-playerpoint/closeHUD", JSON.stringify({}));
-    }
-
     $("#quitButton").click(closehud);
 });
-  
+
+function closehud() {
+    $.post("http://hackee-playerpoint/closeHUD", JSON.stringify({}));
+}
 
 function getNumberOfPages(list) {
     const MAX_PER_PAGE = 15;
