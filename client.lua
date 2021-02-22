@@ -1,7 +1,6 @@
 blips = {}
 keyPressed = false
 hudShowing = false
---local data = assert(io.open("test.txt", "w"))
 
 function createBlip(coord, blipID, blipName)
   if blips[blipName] ~= nil then
@@ -40,7 +39,6 @@ RegisterCommand('addpoint', function(source, args)
   end
 end, false)
 
-
 RegisterCommand('fix', function(source, args)
   SetNuiFocus(false, false)
 end, false)
@@ -65,7 +63,18 @@ RegisterCommand('removepoint', function(source, args)
 end, false)
 
 RegisterNUICallback("createPoint", function(data, cb)
-  print("we in this hoe")
+  if GetFirstBlipInfoId( 8 ) ~= 0 then
+    local blipID = tonumber(data.blipId)
+    local blipName = data.blipName
+    local waypointBlip = GetFirstBlipInfoId( 8 ) 
+    local coord = Citizen.InvokeNative( 0xFA7C7F0AADF25D09, waypointBlip, Citizen.ResultAsVector( ) ) 
+      
+    createBlip(coord, blipID, blipName)
+  else
+    TriggerEvent('chat:addMessage', {
+      args = { '[Error] You need to set a waypoint on your map first!' }
+    })
+  end
 end)
 
 RegisterNUICallback("closeHUD", function(data, cb)
