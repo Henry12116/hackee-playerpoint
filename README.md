@@ -8,5 +8,7 @@
  /removepoint <blipName>
  ```
 # Method 2: UI
+Default key is `b` to open.
+
 ## Demo: 
 https://medal.tv/clips/44699762/d1337SCC0Jk9
