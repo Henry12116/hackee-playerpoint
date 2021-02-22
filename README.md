@@ -9,15 +9,5 @@
  /removepoint <blipName>
  ```
 # Method 2: UI
-## Step 1: add waypoint
-![step1](html/img/s1.PNG)
-
-## Step 2: open UI + select blip
-![step2](html/img/s2.PNG)
-Note: default keybind is `b`
-
-## Step 3: give name
-![step3](html/img/s3.PNG)
-
-## Step 4: profit $$$
-![step4](html/img/s4.PNG)
+## Demo: 
+https://medal.tv/clips/44696385/d1337oTdbdr8
