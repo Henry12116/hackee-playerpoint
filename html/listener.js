@@ -136,7 +136,6 @@ let BLIPIDS = [
     226,
     227,
     229,
-    230,
     233,
     237,
     238,
@@ -508,15 +507,16 @@ $(function() {
     window.onload = (e) => {
         $("#container").hide();
         window.addEventListener("message", (event) => {
-        let data = event.data;
-        if (data !== undefined && data.type === "ui") {
-            if (data.display === true) {
-                $("#container").show();
-                firstPage();
-            } else {
-                $("#container").hide();
+            let data = event.data;
+            if (data !== undefined && data.type === "ui") {
+                if (data.display === true) {
+                    console.log("yeeter");
+                    $("#container").show();
+                    firstPage();
+                } else {
+                    $("#container").hide();
+                }
             }
-        }
         });
     }
 
@@ -549,6 +549,12 @@ function closehud() {
     $.post("http://hackee-playerpoint/closeHUD", JSON.stringify({}));
 }
 
+function resetButtons(){
+    $(".buttonscontainer").html("");
+    let blipButtons = "<button class='btn blueButton' id='first' onclick=firstPage()>First</button><button class='btn blueButton' id='next' onclick=nextPage()>Next</button><button class='btn blueButton' id='previous' onclick=previousPage()>Previous</button><button class='btn blueButton' id='last' onclick=lastPage()>Last</button><button class='btn blueButton' id='quitButton' onclick=closehud()>Quit</button>";
+    $(".buttonscontainer").html(blipButtons);
+}
+
 function getNumberOfPages(list) {
     const MAX_PER_PAGE = 15;
     return Math.ceil(BLIPIDS.length / MAX_PER_PAGE);
@@ -565,16 +571,19 @@ function previousPage() {
 }
 
 function firstPage() {
+    resetButtons();
     currentPage = 1;
     loadList();
-    $(".buttonscontainer").html("");
-    let blipButtons = "<button class='btn blueButton' id='first' onclick=firstPage()>First</button><button class='btn blueButton' id='next' onclick=nextPage()>Next</button><button class='btn blueButton' id='previous' onclick=previousPage()>Previous</button><button class='btn blueButton' id='last' onclick=lastPage()>Last</button><button class='btn blueButton' id='quitButton' onclick=closehud()>Quit</button>";
-    $(".buttonscontainer").html(blipButtons);
 }
 
 function lastPage() {
     currentPage = numberOfPages;
     loadList();
+}
+
+function check() {
+    document.getElementById("next").disabled = currentPage == numberOfPages ? true : false;
+    document.getElementById("previous").disabled = currentPage == 1 ? true : false;
 }
 
 function loadList() {
@@ -585,6 +594,7 @@ function loadList() {
 
     pageList = BLIPIDS.slice(begin, end);
     drawList();
+    check();
 }
 
 function drawList() {
