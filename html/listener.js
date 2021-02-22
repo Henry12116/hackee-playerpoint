@@ -3,7 +3,7 @@ let state = {
 };
 let pageList = new Array();
 let currentPage = 1;
-let numberPerPage = 15;
+let numberPerPage = 36;
 // i know this is trash but the id's dont increase sequentially.... so gotta hardcode
 let BLIPIDS = [
     0,
@@ -19,10 +19,7 @@ let BLIPIDS = [
     14,
     15,
     16,
-    27,
-    28,
     36,
-    37,
     38,
     40,
     41,
@@ -95,7 +92,6 @@ let BLIPIDS = [
     145,
     146,
     147,
-    148,
     149,
     150,
     151,
@@ -139,7 +135,6 @@ let BLIPIDS = [
     225,
     226,
     227,
-    228,
     229,
     230,
     233,
@@ -300,7 +295,6 @@ let BLIPIDS = [
     459,
     460,
     461,
-    462,
     463,
     464,
     465,
@@ -320,7 +314,6 @@ let BLIPIDS = [
     479,
     480,
     481,
-    482,
     483,
     484,
     485,
