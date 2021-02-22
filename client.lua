@@ -40,10 +40,6 @@ RegisterCommand('addpoint', function(source, args)
   end
 end, false)
 
-RegisterCommand('fix', function(source, args)
-  SetNuiFocus(false, false)
-end, false)
-
 RegisterCommand('removepoint', function(source, args)
   if args[1] ~= nil then
     if blips[blipName] ~= nil then
