@@ -9,11 +9,14 @@
  
 
 # Step 1: add waypoint
-![step1](img/s1.PNG)
+![step1](html/img/s1.PNG)
 
-# Step 2: enter commmand
-![step2](img/s2.PNG)
-Note: I use [this site for info.](https://docs.fivem.net/docs/game-references/blips/)
+# Step 2: open UI + select blip
+![step2](html/img/s2.PNG)
+Note: default keybind is `b`
 
-# Step 3: profit ($$$)
-![step3](img/s3.PNG)
+# Step 3: give name
+![step3](html/img/s3.PNG)
+
+# Step 4: profit $$$
+![step4](html/img/s4.PNG)
