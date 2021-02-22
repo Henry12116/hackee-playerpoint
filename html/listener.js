@@ -3,7 +3,7 @@ let state = {
 };
 let pageList = new Array();
 let currentPage = 1;
-let numberPerPage = 36;
+let numberPerPage = 30;
 // i know this is trash but the id's dont increase sequentially.... so gotta hardcode
 let BLIPIDS = [
     0,
@@ -603,7 +603,6 @@ function drawList() {
         $(".blips").append(blipHtml)
         $("#blip"+item).click("click", (event) => {
             state.blipId = event.target.alt;
-            openNameInput();
         });
     })
 }
@@ -617,17 +616,4 @@ function getInputValue(){
     }));
 
     closehud();
-}
-
-function openNameInput() {
-    // clear blip html
-    $(".blips").html("")
-    // remove buttons
-    $(".buttonscontainer").html("")
-    // add back button + quit button
-    var buttonHtml = "<button class='btn blueButton' id='quitButton' onclick=firstPage()>Back</button><button class='btn blueButton' id='quitButton' onclick=closehud()>Quit</button>"
-    $(".buttonscontainer").html(buttonHtml);
-    // add text input
-    var blipNameHtml = "<input type='text' placeholder='Blip name...' id='blipName'><button type='button' onclick='getInputValue();'>Submit</button>";
-    $(".blips").append(blipNameHtml)
 }
