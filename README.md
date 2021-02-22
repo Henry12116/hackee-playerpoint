@@ -11,4 +11,4 @@
 Default key is `b` to open.
 
 ## Demo: 
-https://medal.tv/clips/44699762/d1337SCC0Jk9
+https://medal.tv/clips/44699762/ILlBu3YedFtb
