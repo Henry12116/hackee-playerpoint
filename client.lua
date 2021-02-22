@@ -24,20 +24,12 @@ function createBlip(coord, blipID, blipName)
 end
 
 RegisterCommand('addpoint', function(source, args)
-  if GetFirstBlipInfoId( 8 ) ~= 0 and args[1] ~= nil and args[2] ~= nil then
     local blipID = tonumber(args[1])
     local blipName = args[2]
     local waypointBlip = GetFirstBlipInfoId( 8 )
-    local coord = Citizen.InvokeNative( 0xFA7C7F0AADF25D09, waypointBlip, Citizen.ResultAsVector( ) ) 
-    
+    local coord = GetEntityCoords(GetPlayerPed(-1)) 
+
     createBlip(coord, blipID, blipName)
-  else
-    
-    TriggerEvent('chat:addMessage', {
-      args = { '[Error] Set a waypoint, then type /addpoint <blipID> <blipName>. Google "fivem blips" for ids.' }
-    })
-    
-  end
 end, false)
 
 RegisterCommand('removepoint', function(source, args)
@@ -49,9 +41,9 @@ RegisterCommand('removepoint', function(source, args)
     end
     local blipName = args[1]
     local blip = blips[blipName]
-
+    blips[blipName] = nil
     RemoveBlip(blip)
-    table.remove(blips, blipName)
+    
   else
     TriggerEvent('chat:addMessage', {
       args = { '[Error] /removepoint <blipName>.' }
@@ -60,18 +52,12 @@ RegisterCommand('removepoint', function(source, args)
 end, false)
 
 RegisterNUICallback("createPoint", function(data, cb)
-  if GetFirstBlipInfoId( 8 ) ~= 0 then
-    local blipID = tonumber(data.blipId)
-    local blipName = data.blipName
-    local waypointBlip = GetFirstBlipInfoId( 8 ) 
-    local coord = Citizen.InvokeNative( 0xFA7C7F0AADF25D09, waypointBlip, Citizen.ResultAsVector( ) ) 
+  local blipID = tonumber(data.blipId)
+  local blipName = data.blipName
+  local waypointBlip = GetFirstBlipInfoId( 8 ) 
+  local coord = GetEntityCoords(GetPlayerPed(-1))
       
-    createBlip(coord, blipID, blipName)
-  else
-    TriggerEvent('chat:addMessage', {
-      args = { '[Error] You need to set a waypoint on your map first!' }
-    })
-  end
+  createBlip(coord, blipID, blipName)
 end)
 
 RegisterNUICallback("closeHUD", function(data, cb)
