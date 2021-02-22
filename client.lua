@@ -1,7 +1,7 @@
-require("json")
-
 blips = {}
-local data = assert(io.open("test.txt", "w"))
+keyPressed = false
+hudShowing = false
+--local data = assert(io.open("test.txt", "w"))
 
 function createBlip(coord, blipID, blipName)
   if blips[blipName] ~= nil then
@@ -40,6 +40,11 @@ RegisterCommand('addpoint', function(source, args)
   end
 end, false)
 
+
+RegisterCommand('fix', function(source, args)
+  SetNuiFocus(false, false)
+end, false)
+
 RegisterCommand('removepoint', function(source, args)
   if args[1] ~= nil then
     if blips[blipName] ~= nil then
@@ -58,3 +63,50 @@ RegisterCommand('removepoint', function(source, args)
     })
   end
 end, false)
+
+RegisterNUICallback("createPoint", function(data, cb)
+  print("we in this hoe")
+end)
+
+RegisterNUICallback("closeHUD", function(data, cb)
+  SetNuiFocus(false, false)  
+  SendNUIMessage({
+    type = "ui",
+    display = false
+  })  
+  hudShowing = false
+end)
+
+RegisterNetEvent("openHUD")
+AddEventHandler("openHUD", function()
+  SetNuiFocus(true, true)  
+  SendNUIMessage({
+    type = "ui",
+    display = true
+  })
+  hudShowing = true
+end)
+
+Citizen.CreateThread(function()
+  while true do
+      Wait(0)
+
+      if not keyPressed then
+          if IsControlPressed(0, 29) then
+              keyPressed = true
+
+              if not hudShowing then
+                TriggerEvent("openHUD")
+              else
+                TriggerEvent("closeHUD")
+              end
+          end
+      end
+
+      if keyPressed then
+          if not IsControlPressed(0, 29) then
+              keyPressed = false
+          end
+      end
+  end
+end)

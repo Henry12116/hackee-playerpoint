@@ -1,0 +1,81 @@
+/* This css centers at the middle of the screen */
+#container {
+	margin: auto;
+}
+  
+#tablet {
+	background-image: url("./img/tomtom.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 363px;
+	width: 575px;
+	padding: 51px 54px 100px 54px;
+	position: absolute;
+	top: 25%;
+}
+  
+.blips {
+	display: grid;
+	padding: 5px;
+	grid-template-columns: auto auto auto;
+}
+
+.blip {
+	max-height: 5px;
+	max-width: 5px;
+	padding: 20px
+}
+
+.blip:hover {
+	transform: scale(1.5);
+}
+
+.blueButton:hover {
+	background-color: #24b9f1;
+	transform: scale(1.03);
+}
+  
+p, h1 {
+	padding: 0;
+	margin: 0;
+}
+  
+h1 {
+	font-size: 13px;
+	font-weight: 600;
+	margin: 3px 0;
+	color: #2c3e50;
+}
+  
+.btn {
+	border: none; /* Remove borders */
+	color: #ffffff; /* Add a text color */
+	padding: 8px 23px; /* Add some padding */
+	cursor: pointer; /* Add a pointer cursor on mouse-over */
+	font-size: 12px;
+	border-radius: 27px;
+	font-weight: 600;
+}
+  
+.blueButton {
+	background-color: #1c99c8;
+	transition: transform .2s ease-in-out;
+}
+  
+.blueButton:hover {
+	background-color: #24b9f1;
+	transform: scale(1.03);
+}
+  
+.buttonscontainer {
+	margin-top: 15px;
+	margin-left: 10px;
+}
+  
+fieldset, input, select, textarea {
+	margin-bottom: 0;
+}
+
+a:focus, button:focus {
+	outline: none;
+}
