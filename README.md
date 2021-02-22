@@ -1,12 +1,10 @@
 # hackee-playerpoint
  Allows players to set their own points of interest. `blipId` can be found [here](https://docs.fivem.net/docs/game-references/blips/) and `blipName` can be whatever you want. This is good if there are hidden locations on your map that players may want to remember.
  
- 
  ```
  /addpoint <blipId> <blipName>
  /removepoint <blipName>
  ```
- 
 
 # Step 1: add waypoint
 ![step1](html/img/s1.PNG)
