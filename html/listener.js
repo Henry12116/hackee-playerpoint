@@ -562,37 +562,31 @@ function getNumberOfPages(list) {
 }
 
 function nextPage() {
-    $(".blips").html("")
     currentPage += 1;
     loadList();
 }
 
 function previousPage() {
-    $(".blips").html("")
     currentPage -= 1;
     loadList();
 }
 
 function firstPage() {
-    $(".blips").html("")
     currentPage = 1;
     loadList();
-}
-
-function lastPage() {
-    $(".blips").html("")
-    currentPage = numberOfPages;
-    loadList();
-}
-
-function goBack() {
-    firstPage();
     $(".buttonscontainer").html("");
     let blipButtons = "<button class='btn blueButton' id='first' onclick=firstPage()>First</button><button class='btn blueButton' id='next' onclick=nextPage()>Next</button><button class='btn blueButton' id='previous' onclick=previousPage()>Previous</button><button class='btn blueButton' id='last' onclick=lastPage()>Last</button><button class='btn blueButton' id='quitButton' onclick=closehud()>Quit</button>";
     $(".buttonscontainer").html(blipButtons);
 }
 
+function lastPage() {
+    currentPage = numberOfPages;
+    loadList();
+}
+
 function loadList() {
+    $(".blips").html("");
+    state.blipId = null;
     var begin = ((currentPage - 1) * numberPerPage);
     var end = begin + numberPerPage;
 
@@ -611,14 +605,26 @@ function drawList() {
     })
 }
 
+function getInputValue(){
+    // Selecting the input element and get its value 
+    var inputVal = document.getElementById("blipName").value;
+    $.post("http://hackee-playerpoint/createPoint", JSON.stringify({
+        'blipId': state.blipId,
+        'blipName': inputVal
+    }));
+
+    closehud();
+}
+
 function openNameInput() {
     // clear blip html
     $(".blips").html("")
     // remove buttons
     $(".buttonscontainer").html("")
     // add back button + quit button
-    $(".buttonscontainer").html("<button class='btn blueButton' id='quitButton' onclick=goBack()>Back</button><button class='btn blueButton' id='quitButton' onclick=closehud()>Quit</button>")
+    var buttonHtml = "<button class='btn blueButton' id='quitButton' onclick=firstPage()>Back</button><button class='btn blueButton' id='quitButton' onclick=closehud()>Quit</button>"
+    $(".buttonscontainer").html(buttonHtml);
     // add text input
-    var blipNameHtml = "<form class='blipnamer'><label for='blipname'>Blip Name:</label><input type='text' id='blipname' name='blipname'><br><br><input type='submit' value='Submit'></form>"
+    var blipNameHtml = "<input type='text' placeholder='Blip name...' id='blipName'><button type='button' onclick='getInputValue();'>Submit</button>";
     $(".blips").append(blipNameHtml)
 }
