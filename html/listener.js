@@ -510,7 +510,6 @@ $(function() {
             let data = event.data;
             if (data !== undefined && data.type === "ui") {
                 if (data.display === true) {
-                    console.log("yeeter");
                     $("#container").show();
                     firstPage();
                 } else {
@@ -582,8 +581,8 @@ function lastPage() {
 }
 
 function check() {
-    document.getElementById("next").disabled = currentPage == numberOfPages ? true : false;
-    document.getElementById("previous").disabled = currentPage == 1 ? true : false;
+    document.getElementById("next").visible = currentPage == numberOfPages ? true : false;
+    document.getElementById("previous").visible = currentPage == 1 ? true : false;
 }
 
 function loadList() {

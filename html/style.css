@@ -7,8 +7,8 @@
 	background-image: url("./img/tomtom.png");
 	background-repeat: no-repeat;
 	background-size: contain;
-	height: 363px;
-	width: 575px;
+	height: 333px;
+	width: 555px;
 	padding: 51px 54px 100px 54px;
 	position: absolute;
 	top: 25%;
@@ -26,6 +26,11 @@
 	max-height: 5px;
 	max-width: 5px;
 	padding: 20px
+}
+
+.blipname {
+	margin-left: 20px;
+	margin-top: 10px;
 }
 
 .blip:hover {
@@ -52,10 +57,10 @@ h1 {
 .btn {
 	border: none; /* Remove borders */
 	color: #ffffff; /* Add a text color */
-	padding: 8px 23px; /* Add some padding */
+	padding: 8px 23px 5px; /* Add some padding */
 	cursor: pointer; /* Add a pointer cursor on mouse-over */
 	font-size: 12px;
-	border-radius: 27px;
+	border-radius: 5px;
 	font-weight: 600;
 }
   
