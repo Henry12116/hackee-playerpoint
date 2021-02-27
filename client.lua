@@ -8,12 +8,14 @@ end)
 
 RegisterNetEvent("playerpoint:loadBlips")
 AddEventHandler("playerpoint:loadBlips", function(playerData)
-  for k,v in pairs(playerData) do
-    local blipName = k
-    local coord = v[1]
-    local blipId = v[2]
-    local blip = createBlip(coord, blipId, blipName)
-    blips[blipName] = {coord, blipID, blip}
+  if playerData ~= nil then
+    for k,v in pairs(playerData) do
+      local blipName = k
+      local coord = v[1]
+      local blipId = v[2]
+      local blip = createBlip(coord, blipId, blipName)
+      blips[blipName] = {coord, blipID, blip}
+    end
   end
 end)
 
@@ -86,8 +88,6 @@ RegisterNUICallback("createPoint", function(data, cb)
   local blipName = data.blipName
   local waypointBlip = GetFirstBlipInfoId( 8 ) 
   local coord = GetEntityCoords(GetPlayerPed(-1))
-      
-  print(blipID, blipName)
   local blip = createBlip(coord, blipID, blipName)
   blips[blipName] = {coord, blipID, blip}
   TriggerServerEvent("playerpoint:saveBlip", blips)
